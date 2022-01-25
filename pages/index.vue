@@ -23,7 +23,7 @@
           rel="noopener noreferrer"
           class="button--green"
         >
-          Documentation
+          Documentation测试
         </a>
         <a
           href="https://github.com/nuxt/nuxt.js"
