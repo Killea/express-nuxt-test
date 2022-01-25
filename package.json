@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxt/http": "latest",
+    "axios": "^0.25.0",
     "express": "latest",
     "nuxt": "latest"
   },

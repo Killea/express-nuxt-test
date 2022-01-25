@@ -8,10 +8,32 @@ const users = [
   { name: 'Pooya' },
   { name: 'Sébastien' }
 ]
-
+const axios = require('axios')
 /* GET users listing. */
-router.get('/users', function (req, res, next) {
-  res.json(users)
+router.get('/users', async function (req, res, next) {
+  const data = JSON.stringify({
+    collection: 'test_collection',
+    database: 'test',
+    dataSource: 'Cluster0',
+    projection: {
+      pig: 'test'
+    }
+  })
+
+  const config = {
+    method: 'post',
+    url: 'https://data.mongodb-api.com/app/data-elaox/endpoint/data/beta/action/findOne',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Request-Headers': '*',
+      'api-key': 'NCTWPlsj3upMrCYX4grtjYssu2dVJO2PNN3B3hZSbucrZWTnj72sPM0OR4de9qCk'
+    },
+    data
+  }
+
+  const result = await axios(config)
+  console.log(result.data)
+  res.json([{ name: result.data }])
 })
 
 /* GET user by ID. */
